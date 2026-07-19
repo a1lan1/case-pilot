@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Notifications\DatabaseNotification;
+use Override;
+
+/**
+ * @property DatabaseNotification $resource
+ */
+class NotificationResource extends JsonResource
+{
+    /**
+     * @return array<string, mixed>
+     */
+    #[Override]
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->resource->id,
+            'data' => [
+                'title' => $this->resource->data['title'] ?? '',
+                'message' => $this->resource->data['message'] ?? '',
+                'type' => $this->resource->data['type'] ?? 'info',
+                'action_url' => $this->resource->data['action_url'] ?? null,
+                'icon' => $this->resource->data['icon'] ?? null,
+            ],
+            'read_at' => $this->resource->read_at?->toISOString(),
+            'created_at' => $this->resource->created_at?->toISOString(),
+        ];
+    }
+}
