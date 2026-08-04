@@ -8,21 +8,15 @@ use App\Data\NotificationData;
 use App\Enums\NotificationTypeEnum;
 use App\Interfaces\NotificationServiceInterface;
 use App\Models\User;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 
+#[Description('Send a demo notification to all users')]
+#[Signature('app:send-demo-notification')]
 final class SendDemoNotification extends Command
 {
-    /**
-     * @var string
-     */
-    protected $signature = 'app:send-demo-notification';
-
-    /**
-     * @var string
-     */
-    protected $description = 'Send a demo notification to all users';
-
     public function handle(NotificationServiceInterface $notificationService): int
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');

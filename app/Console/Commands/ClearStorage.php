@@ -4,21 +4,15 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
+#[Description('Clear specified storage directories')]
+#[Signature('storage:clear')]
 class ClearStorage extends Command
 {
-    /**
-     * @var string
-     */
-    protected $signature = 'storage:clear';
-
-    /**
-     * @var string
-     */
-    protected $description = 'Clear specified storage directories';
-
     public function handle(): void
     {
         $directories = [

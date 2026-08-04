@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
+#[Description('Re-imports all searchable models')]
+#[Signature('scout:reimport-all')]
 class ReimportScoutModelsCommand extends Command
 {
-    protected $signature = 'scout:reimport-all';
-
-    protected $description = 'Re-imports all searchable models';
-
     /**
      * @var array<class-string>
      */
