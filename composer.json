@@ -30,6 +30,7 @@
         "spatie/laravel-backup": "^10.2",
         "spatie/laravel-data": "^4.20",
         "spatie/laravel-medialibrary": "^11.21",
+        "spatie/laravel-model-states": "^2.14",
         "spatie/laravel-permission": "^7.2",
         "spatie/laravel-prometheus": "^1.5",
         "spiral/roadrunner-cli": "^2.6.0",
