@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Assignment\Providers\AssignmentServiceProvider;
 use App\Modules\Case\Providers\CaseServiceProvider;
 use App\Providers\AppServiceProvider;
 use App\Providers\Filament\AdminPanelProvider;
@@ -14,4 +15,5 @@ return [
     HorizonServiceProvider::class,
     PrometheusServiceProvider::class,
     CaseServiceProvider::class,
+    AssignmentServiceProvider::class,
 ];
