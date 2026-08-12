@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Case\Providers\CaseServiceProvider;
 use App\Providers\AppServiceProvider;
 use App\Providers\Filament\AdminPanelProvider;
 use App\Providers\FortifyServiceProvider;
@@ -12,4 +13,5 @@ return [
     FortifyServiceProvider::class,
     HorizonServiceProvider::class,
     PrometheusServiceProvider::class,
+    CaseServiceProvider::class,
 ];
