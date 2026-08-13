@@ -8,10 +8,13 @@ use App\Interfaces\NotificationRepositoryInterface;
 use App\Interfaces\NotificationServiceInterface;
 use App\Repositories\EloquentNotificationRepository;
 use App\Services\NotificationService;
+use App\Shared\Domain\Events\EventPublisherInterface;
+use App\Shared\Infrastructure\Messaging\RabbitMqEventPublisher;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Override;
@@ -34,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
     #[Override]
     public function register(): void
     {
+        $this->app->bind(EventPublisherInterface::class, fn (): EventPublisherInterface => new RabbitMqEventPublisher(
+            Queue::connection('rabbitmq-events')
+        ));
+
         if (! app()->isProduction()) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
