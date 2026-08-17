@@ -232,6 +232,16 @@ services:
       timeout: 5s
       retries: 5
 
+  worker-python:
+    build:
+      context: ./docker/workers/python
+    restart: unless-stopped
+    networks:
+      - case_pilot_app
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
 networks:
   case_pilot_app:
     name: case_pilot_app
