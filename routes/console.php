@@ -13,3 +13,6 @@ Schedule::command('backup:clean')->daily()->at('20:00');
 
 // Demo Notifications
 Schedule::command('app:send-demo-notification')->everyThirtyMinutes();
+
+// Outbox
+Schedule::command('outbox:publish')->everyMinute()->withoutOverlapping();
