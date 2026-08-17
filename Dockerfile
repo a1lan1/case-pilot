@@ -71,10 +71,10 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 WORKDIR /var/www/html
 
 # Expose the port for local development
-EXPOSE 8585
+EXPOSE 8989
 
 # Use entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Command for local development
-CMD ["php", "artisan", "octane:start", "--server=roadrunner", "--watch", "--host=0.0.0.0", "--port=8585"]
+CMD ["php", "artisan", "octane:start", "--server=roadrunner", "--watch", "--host=0.0.0.0", "--port=8989"]
